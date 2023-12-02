@@ -1,0 +1,224 @@
+<!-- Version 1 (works good) -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Scraper</title>
+    <style>
+        .result-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>News Scraper</h1>
+    <form action="/fetch" method="post">
+        <label for="link">Paste the news link:</label>
+        <input type="text" id="link" name="link" placeholder="Enter the news link here" required>
+        <button type="submit">Fetch</button>
+        <button type="button" onclick="clearSearchBox()">Clear</button>
+    </form>
+
+    <div class="result-box" id="result-box">
+        <h2>News Content</h2>
+        
+        {% if content %}
+            <p>{{ content }}</p>
+        {% else %}
+            <p>No content available.</p>
+        {% endif %}
+    </div>
+
+    {% if error %}
+        <div style="color: red;">
+            <strong>Error:</strong> {{ error }}
+        </div>
+    {% endif %}
+
+    <script>
+        // Show result box when content is available
+        var resultBox = document.getElementById('result-box');
+        if (resultBox.textContent.trim() !== '') {
+            resultBox.style.display = 'block';
+        }
+
+        function clearSearchBox() {
+            document.getElementById('link').value = '';
+            resultBox.style.display = 'none';
+        }
+    </script>
+</body>
+</html> -->
+
+<!-- Version 2 (Works good, with logo)-->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Scraper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        #logo {
+            margin-top: 50px;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+        #main-heading {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="logo">
+        Add your image URL here 
+        <img src="{{url_for('static',filename = 'invoice.svg')}}" alt="Logo" width="200">
+    </div>
+
+    <h1>News Scraper</h1>
+    <form action="/fetch" method="post">
+        <label for="link">Paste the news link:</label>
+        <input type="text" id="link" name="link" placeholder="Enter the news link here" required>
+        <button type="submit">Fetch</button>
+        <button type="button" onclick="clearSearchBox()">Clear</button>
+    </form>
+
+    <div class="result-box" id="result-box">
+        <h2 id="main-heading">News Content</h2>
+        
+        {% if content %}
+            <p>{{ content }}</p>
+            <p><a href="{{ content_url }}" target="_blank">Read More</a></p>
+        {% else %}
+            <p>No content available.</p>
+        {% endif %}
+    </div>
+
+    {% if error %}
+        <div style="color: red;">
+            <strong>Error:</strong> {{ error }}
+        </div>
+    {% endif %}
+
+    <script>
+        // Show result box when content is available
+        var resultBox = document.getElementById('result-box');
+        if (resultBox.textContent.trim() !== '') {
+            resultBox.style.display = 'block';
+        }
+
+        function clearSearchBox() {
+            document.getElementById('link').value = '';
+            resultBox.style.display = 'none';
+        }
+    </script>
+</body>
+</html> --> 
+
+<!-- Version 3 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Scraper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        #logo {
+            margin-top: 50px;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+        #main-heading {
+            margin-top: 20px;
+        }
+
+        #content {
+            text-align: left;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="logo">
+        <!-- Use Jinja templating to include the image URL dynamically -->
+        <img src="{{url_for('static',filename = 'invoice.svg')}}" alt="Logo" width="200">
+    </div>
+
+    <h1>News Scraper</h1>
+    <form action="/fetch" method="post">
+        <label for="link">Paste the news link:</label>
+        <input type="text" id="link" name="link" placeholder="Enter the news link here" required>
+        <button type="submit">Fetch</button>
+        <button type="button" onclick="clearSearchBox()">Clear</button>
+    </form>
+
+    <div class="result-box" id="result-box">
+        <h2 id="main-heading">
+            {% if header_description %}
+                <a href="{{ news_url}}" target="_blank">{{ header_description }}</a>
+            {% else %}
+                No header found
+            {% endif %}
+        </h2>
+        
+        <!-- <div id="content">
+            {% if paragraphs %}
+                {% for paragraph in paragraphs %}
+                    <p>{{ paragraph }}</p>
+                {% endfor %}
+            {% else %}
+                No content available.
+            {% endif %}
+        </div> -->
+    </div>
+
+    {% if error %}
+        <div style="color: red;">
+            <strong>Error:</strong> {{ error }}
+        </div>
+    {% endif %}
+
+    <script>
+        // Show result box when content is available
+        var resultBox = document.getElementById('result-box');
+        if (resultBox.textContent.trim() !== '') {
+            resultBox.style.display = 'block';
+        }
+
+        function clearSearchBox() {
+            document.getElementById('link').value = '';
+            resultBox.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
