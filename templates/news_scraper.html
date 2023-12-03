@@ -148,15 +148,25 @@
         }
 
         #logo {
-            margin-top: 50px;
-        }
+                margin-top: 50px;
+                text-align: center;  /* Center the logo */
+            }
+            
+        #logo img {
+                max-width: 100%;  /* Ensure the image doesn't exceed its container */
+                height: auto;  /* Maintain the image's aspect ratio */
+            }
 
-        .result-box {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            display: none;
-        }
+            .result-box {
+                margin-top: 50px;
+                padding: 5px;
+                border: 1px solid #ccc;
+                display: none;
+                max-width: calc(100% - 10px); /* 100% width with 10px padding on both sides */
+                margin-left: auto; /* Align left edge */
+                margin-right: auto; /* Align right edge */
+            }
+        
 
         #main-heading {
             margin-top: 20px;
@@ -171,7 +181,7 @@
 <body>
     <div id="logo">
         <!-- Use Jinja templating to include the image URL dynamically -->
-        <img src="{{url_for('static',filename = 'invoice.svg')}}" alt="Logo" width="200">
+        <img src="{{url_for('static',filename = 'invoice.svg')}}" alt="Logo" width="500">
     </div>
 
     <h1>News Scraper</h1>
@@ -182,7 +192,7 @@
         <button type="button" onclick="clearSearchBox()">Clear</button>
     </form>
 
-    <div class="result-box" id="result-box">
+    <!-- <div class="result-box" id="result-box">
         <h2 id="main-heading">
             {% if header_description %}
                 <a href="{{ news_url}}" target="_blank">{{ header_description }}</a>
@@ -198,7 +208,27 @@
     {% else %}
         Paste a url to get started ...
     {% endif %}    
-    </h2>
+    </h2> -->
+    <div style="margin-top: 50px;"></div> 
+    <div class="result-box" id="result-box" style="max-width: 1000px; margin: 0 auto;">
+        <h2 id="main-heading">
+            {% if header_description %}
+                <a href="{{ news_url }}" target="_blank">{{ header_description }}</a>
+            {% else %}
+                No header found
+            {% endif %}
+        </h2>
+        <h2>
+            {% if result == 1 %}
+                This News is Real!
+            {% elif result == 0 %}
+                This News seems to be fake!
+            {% else %}
+                Paste a URL to get started...
+            {% endif %}
+        </h2>
+    </div>
+    
 <!-- 
       <div id="content">
             {% if paragraphs %}
@@ -209,7 +239,7 @@
                 No content available.
             {% endif %}
         </div>  -->
-    </div>
+    <!-- </div> -->
 
     {% if error %}
         <div style="color: red;">
