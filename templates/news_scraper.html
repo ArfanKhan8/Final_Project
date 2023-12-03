@@ -191,13 +191,16 @@
             {% endif %}
         </h2>
        <h2>
-        {% if result %}
-            This news is Real !
-        {% else %}
-            This news seems to be Fake :(
-        {% endif %}
-       </h2>
-        <!-- <div id="content">
+    {% if result %}
+        This News is Real !
+    {% elif result == 0 %}
+        This News seems to be fake !
+    {% else %}
+        Paste a url to get started ...
+    {% endif %}    
+    </h2>
+<!-- 
+      <div id="content">
             {% if paragraphs %}
                 {% for paragraph in paragraphs %}
                     <p>{{ paragraph }}</p>
@@ -205,7 +208,7 @@
             {% else %}
                 No content available.
             {% endif %}
-        </div> -->
+        </div>  -->
     </div>
 
     {% if error %}
