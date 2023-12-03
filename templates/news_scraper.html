@@ -190,7 +190,13 @@
                 No header found
             {% endif %}
         </h2>
-        
+       <h2>
+        {% if result %}
+            This news is Real !
+        {% else %}
+            This news seems to be Fake :(
+        {% endif %}
+       </h2>
         <!-- <div id="content">
             {% if paragraphs %}
                 {% for paragraph in paragraphs %}

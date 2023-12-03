@@ -6,11 +6,12 @@ import re
 
 class NewsPredictor:
 
-    def __init__(self) -> None:
+    def __init__(self,data) -> None:
         self.create_spark_session()
-        self.load_data()
+        self.load_model()
+        self.load_data(data)
         self.create_dataframe()
-        self.predict()
+        
 
 
     def create_spark_session(self):
@@ -39,7 +40,9 @@ class NewsPredictor:
 
         # Show the predictions
         # predictions.show()
-        print(predictions.collect()[0][5])
-
+        result =  predictions.collect()[0][5]
         # Stop the Spark session
         self.spark.stop()
+        return result
+
+        
