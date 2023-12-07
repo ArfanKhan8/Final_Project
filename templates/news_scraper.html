@@ -109,12 +109,14 @@
                 This News seems to be fake!
             {% endif %}
         </h2>
-    </div>
-       {% if error %}
-        <div class="error-msg" id="error-msg" style="color: red;">
+        {% if error %}
+        <h2 style="color: red;">
             <strong>Error:</strong> {{ error }}
-        </div>
-    {% endif %}
+        </h2>    
+        {% endif %}
+        
+    </div>
+      
 
     <script>
         // Show result box when content is available
