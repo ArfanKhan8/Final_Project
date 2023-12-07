@@ -31,4 +31,4 @@ def fetch():
         return render_template('news_scraper.html', header_description=header_description, paragraphs=paragraphs,news_url = link, result = result)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port=5000)
+    app.run(host="0.0.0.0",port=8000)

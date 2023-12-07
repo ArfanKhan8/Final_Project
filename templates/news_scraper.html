@@ -27,6 +27,7 @@
                 border: 1px solid #ccc;
                 display: none;
                 max-width: calc(100% - 10px); /* 100% width with 10px padding on both sides */
+                min-width: 800px;
                 margin-left: auto; /* Align left edge */
                 margin-right: auto; /* Align right edge */
             }
@@ -45,7 +46,7 @@
 <body>
     <div id="logo">
         <!-- Use Jinja templating to include the image URL dynamically -->
-        <img src="{{url_for('static',filename = 'invoice.svg')}}" alt="Logo" width="500">
+        <img src="{{url_for('static',filename = 'cover_image.svg')}}" alt="Logo" width="500">
     </div>
 
     <h1>News Scraper</h1>
@@ -57,7 +58,7 @@
     </form>
 
     <div style="margin-top: 50px;"></div> 
-    <div class="result-box" id="result-box" style="min-width: 800px; max-width: auto; margin: 0 auto;">
+    <div class="result-box" id="result-box" >
         <h2 id="main-heading">
             {% if header_description %}
                 <a href="{{ news_url }}" target="_blank">{{ header_description }}</a>
