@@ -59,7 +59,7 @@
 <body>
     <div id="logo">
         <!-- Use Jinja templating to include the image URL dynamically -->
-        <img src="{{url_for('static',filename = 'cover_image.png')}}" alt="Logo" width="500">
+        <img src="{{url_for('static',filename = 'cover_image.svg')}}" alt="Logo" width="500">
     </div>
 
     <form action="/fetch" method="post">
@@ -83,8 +83,6 @@
                 This News is Real!
             {% elif result == 0 %}
                 This News seems to be fake!
-            {% else %}
-                Paste a URL to get started...
             {% endif %}
         </h2>
     </div>
