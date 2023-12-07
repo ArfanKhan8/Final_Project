@@ -9,6 +9,8 @@
             font-family: Arial, sans-serif;
             margin: 20px;
             text-align: center;
+            background-image: url({{ url_for('static',filename='bg.gif' ) }});
+            background-size: cover;
         }
 
         #logo {
@@ -26,8 +28,9 @@
                 padding: 5px;
                 border: 1px solid #ccc;
                 display: none;
+                background-color: white;
                 max-width: calc(100% - 10px); /* 100% width with 10px padding on both sides */
-                min-width: 800px;
+                width: 800px;
                 margin-left: auto; /* Align left edge */
                 margin-right: auto; /* Align right edge */
             }
@@ -46,7 +49,7 @@
 <body>
     <div id="logo">
         <!-- Use Jinja templating to include the image URL dynamically -->
-        <img src="{{url_for('static',filename = 'cover_image.svg')}}" alt="Logo" width="500">
+        <img src="{{url_for('static',filename = 'cover_image.png')}}" alt="Logo" width="500">
     </div>
 
     <h1>News Scraper</h1>
@@ -62,7 +65,7 @@
         <h2 id="main-heading">
             {% if header_description %}
                 <a href="{{ news_url }}" target="_blank">{{ header_description }}</a>
-            {% else %}
+            {% elif result != 2 %}
                 No header found
             {% endif %}
         </h2>
@@ -76,21 +79,8 @@
             {% endif %}
         </h2>
     </div>
-    
-<!-- 
-      <div id="content">
-            {% if paragraphs %}
-                {% for paragraph in paragraphs %}
-                    <p>{{ paragraph }}</p>
-                {% endfor %}
-            {% else %}
-                No content available.
-            {% endif %}
-        </div>  -->
-    <!-- </div> -->
-
-    {% if error %}
-        <div style="color: red;">
+       {% if error %}
+        <div class="error-msg" id="error-msg" style="color: red;">
             <strong>Error:</strong> {{ error }}
         </div>
     {% endif %}
@@ -105,6 +95,7 @@
         function clearSearchBox() {
             document.getElementById('link').value = '';
             resultBox.style.display = 'none';
+            document.getElementById('error-msg').innerText = ''
         }
     </script>
 </body>

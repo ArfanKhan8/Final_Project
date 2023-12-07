@@ -7,10 +7,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('news_scraper.html')
+    result = 2
+    return render_template('news_scraper.html', result =result)
 
 @app.route('/fetch', methods=['GET','POST'])
 def fetch():
+    result = 2
     link = ''
     header_description = ''
     paragraphs = ''
