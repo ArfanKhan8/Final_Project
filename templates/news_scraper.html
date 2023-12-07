@@ -44,6 +44,16 @@
             text-align: left;
             margin-top: 20px;
         }
+        #fetch-button {
+    background-color: #fefefe; /* Google Search button blue */
+    color: #040839; /* White text */
+    border: 1px solid #fefeff; /* Same color as background */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-size: 16px; /* Adjust font size as needed */
+    cursor: pointer; /* Add cursor pointer on hover */
+}
+
     </style>
 </head>
 <body>
@@ -55,7 +65,7 @@
     <form action="/fetch" method="post">
         <label for="link">Paste the news link:</label>
         <input type="text" id="link" name="link" placeholder="Enter the news link here" required>
-        <button type="submit">Fetch</button>
+        <button id="fetch-button" type="submit">Fetch</button>
         <button type="button" onclick="clearSearchBox()">Clear</button>
     </form>
 
