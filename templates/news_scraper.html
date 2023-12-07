@@ -41,10 +41,21 @@
         }
 
         #content {
-            text-align: left;
+            text-align: center;
             margin-top: 20px;
         }
-        #fetch-button {
+                #link {
+            border: 1px solid #dfe1e5; /* Google search box border color */
+            border-radius: 24px; /* Rounded corners */
+            padding: 10px; /* Adjust padding as needed */
+            width: 500px; /* Set the width to 500px */
+            font-size: 16px; /* Adjust font size as needed */
+            outline: none; /* Remove the default focus outline */
+            /* display: inline-block; /* Display the search box as an inline block */
+        }
+
+        #fetch-button,
+        #clear-button {
             background-color: #4285f4; /* Google Search button blue */
             color: #fff; /* White text */
             border: 1px solid #4285f4; /* Same color as background */
@@ -53,28 +64,16 @@
             font-size: 18px; /* Adjust font size as needed */
             font-weight: bold; /* Make the font bold */
             cursor: pointer; /* Add cursor pointer on hover */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for a 3D effect */
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28); /* Box shadow for a subtle 3D effect */
             transition: box-shadow 0.3s ease; /* Add a smooth transition for the box shadow */
+            margin: 10px; /* Add margin between the buttons */
         }
 
-        #fetch-button:hover {
-            box-shadow: 0 8px 16px rgba(255, 254, 254, 0.308); /* Increase box shadow on hover for depth */
-        }
-        
-        #link {
-            border: 1px solid #dfe1e5; /* Google search box border color */
-            border-radius: 24px; /* Rounded corners */
-            padding: 10px; /* Adjust padding as needed */
-            width: 300px; /* Set a specific width or adjust as needed */
-            font-size: 16px; /* Adjust font size as needed */
-            outline: none; /* Remove the default focus outline */
-
+        #fetch-button:hover,
+        #clear-button:hover {
+            box-shadow: 0 3px 6px rgba(32, 33, 36, 0.28); /* Increase box shadow on hover for depth */
         }
 
-        #link:hover,
-        #link:focus {
-            border-color: #f5f6f7; /* Change border color on hover/focus to match Google's primary color */
-        }
 
 
 
@@ -87,11 +86,14 @@
         <img src="{{url_for('static',filename = 'cover_image.svg')}}" alt="Logo" width="500">
     </div>
 
-    <form action="/fetch" method="post" style="padding-top: 50px;">
+    <form action="/fetch" method="post" style="padding-top: 50px; padding-bottom: 10px;" >
         <input  type="text" id="link" name="link" placeholder="Enter the news link here" required>
-        <button id="fetch-button" type="submit">Fetch</button>
-        <button type="button" onclick="clearSearchBox()">Clear</button>
+        
     </form>
+    <div>   
+        <button id="fetch-button" type="submit">Fetch</button>
+        <button id="clear-button" type="button" onclick="clearSearchBox()">Clear</button>
+    </div>
 
     <div style="margin-top: 50px;"></div> 
     <div class="result-box" id="result-box" >
