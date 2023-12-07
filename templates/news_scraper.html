@@ -88,12 +88,12 @@
 
     <form action="/fetch" method="post" style="padding-top: 50px; padding-bottom: 20px;" >
         <input  type="text" id="link" name="link" placeholder="Enter the news link here" required>
-        
+        <div>   
+            <button id="fetch-button" type="submit">Fetch</button>
+            <button id="clear-button" type="button" onclick="clearSearchBox()">Clear</button>
+        </div>
     </form>
-    <div>   
-        <button id="fetch-button" type="submit">Fetch</button>
-        <button id="clear-button" type="button" onclick="clearSearchBox()">Clear</button>
-    </div>
+   
 
     <div style="margin-top: 50px;"></div> 
     <div class="result-box" id="result-box" >
