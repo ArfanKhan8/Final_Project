@@ -24,9 +24,10 @@ def fetch():
             soup = BeautifulSoup(response.text, 'html.parser')
             header_description = soup.title.string if soup.title else "No header found"
             paragraphs = [p.get_text() for p in soup.find_all('p')]
-            paragraphs_to_string =" ".join(paragraphs) 
+            paragraphs_to_string =" ".join(paragraphs[:100]) 
             predictor = NewsPredictor(paragraphs_to_string)
             result = predictor.predict()
+            print("Result: ",result)
         except Exception as e:
             return render_template('news_scraper.html', error=str(e))
 
